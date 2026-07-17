@@ -1,0 +1,18 @@
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+
+class User(AbstractUser):
+    class Role(models.TextChoices):
+        ADMIN = "ADMIN", "Super Admin"
+        OWNER = "OWNER", "Turf Owner"
+        CUSTOMER = "CUSTOMER", "Customer"
+        STAFF = "STAFF", "Staff"
+
+    role = models.CharField(max_length=12, choices=Role.choices, default=Role.CUSTOMER)
+    phone = models.CharField(max_length=20, blank=True)
+    is_email_verified = models.BooleanField(default=False)
+
+    @property
+    def is_owner(self):
+        return self.role == self.Role.OWNER

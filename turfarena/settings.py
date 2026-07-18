@@ -48,3 +48,15 @@ STATIC_URL, STATICFILES_DIRS, MEDIA_URL, MEDIA_ROOT = "/static/", [BASE_DIR / "s
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL = "dashboard:home", "dashboard:home"
 REST_FRAMEWORK = {"DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticatedOrReadOnly"]}
+
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATIC_URL = "static/"
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]

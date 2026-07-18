@@ -7,11 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-development-key-change-me")
 DEBUG = os.getenv("DEBUG", "True").lower() == "true"
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1", ALLOWED_HOSTS = os.getenv(
-    "ALLOWED_HOSTS",
-    "localhost,127.0.0.1,turfarena-hhvr.onrender.com"
-).split(",")).split(",")
-
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1,turfarena-hhvr.onrender.com").split(",")
 CSRF_TRUSTED_ORIGINS = [
     "https://turfarena-hhvr.onrender.com",
 ]
